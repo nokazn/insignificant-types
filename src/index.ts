@@ -1,7 +1,7 @@
 export type Unpromisify<T> = T extends Promise<infer U> ? U : T;
 
-export type KeyOfMap<T> = T extends Map<infer K, unknown> ? K : never;
-export type ValueOfMap<T> = T extends Map<unknown, infer V> ? V : never;
+export type KeyOfMap<T, V = any> = T extends Map<infer K, V> ? K : never;
+export type ValueOfMap<T, K = any> = T extends Map<K, infer V> ? V : never;
 
 export type ValueOfSet<T> = T extends Set<infer V> ? V : never;
 
