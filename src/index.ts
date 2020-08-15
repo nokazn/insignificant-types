@@ -27,6 +27,10 @@ export type UnionToIntersection<T> = (T extends any ? (k: T) => void : never) ex
  */
 export type ValueOf<T extends { [k: string]: any }> = T[keyof T];
 
+export type MethodOf<T extends { [k: string]: any }> = T extends { [k: string]: infer U }
+  ? U extends (...args: any[]) => any ? U : never
+  : never;
+
 export type UnionOfEachObject<T extends { [k: string]: any }> = ValueOf<{
   [P in keyof T]: { [Q in P]: T[Q] }
 }>;
