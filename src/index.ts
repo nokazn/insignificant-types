@@ -2,6 +2,7 @@
  * Promise types
  */
 export type Unpromisify<T> = T extends Promise<infer U> ? U : T;
+export type IsPromiseFunc<T> = T extends (...args: any[]) => Promise<any> ? true : false;
 
 /**
  * Map types
